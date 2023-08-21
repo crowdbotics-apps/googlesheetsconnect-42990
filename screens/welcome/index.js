@@ -1,3 +1,4 @@
+import { googlesheets_get_spreadsheetId_read } from "../../store/googleSheets/googlesheets_response_get_Newdatacalls.slice.js";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import React from "react";
@@ -5,7 +6,9 @@ import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-n
 
 const WelcomeScreen = () => {
   const dispatch = useDispatch();
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(googlesheets_get_spreadsheetId_read());
+  }, []);
   return <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.group} />
