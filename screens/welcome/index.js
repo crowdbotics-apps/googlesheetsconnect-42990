@@ -1,13 +1,20 @@
-import { googlesheets_get_spreadsheetId_read } from "../../store/googleSheets/googlesheets_response_get_Newdatacalls.slice.js";
+import { googlesheets_get_spreadsheetId_read } from "../../store/googleSheets/googlesheets_response_get_getSheetData.slice";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-native";
 
 const WelcomeScreen = () => {
   const dispatch = useDispatch();
+  const { entities } = useSelector(state => state.Googlesheets_response_get_getSheetData)
+
+  console.log("entities", entities[0]?.sheets[0]?.data)
   useEffect(() => {
-    dispatch(googlesheets_get_spreadsheetId_read());
+    dispatch(googlesheets_get_spreadsheetId_read({
+      spreadsheetId: "1qCc9gWdw0TZ0Tn7B1z21R49ns5f6LuuV0DxF9IIIH58",
+      includeGridData: true,
+      ranges: "A1:A2"
+    }));
   }, []);
   return <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
