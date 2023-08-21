@@ -1,16 +1,15 @@
-import React from "react"
-import {
-  View,
-  Image,
-  Text,
-  ScrollView,
-  SafeAreaView,
-  StyleSheet
-} from "react-native"
+import { googlesheets_get_spreadsheetId_read } from "../../store/googleSheets/googlesheets_response_get_Newdatacalls.slice.js";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import React from "react";
+import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-native";
 
 const WelcomeScreen = () => {
-  return (
-    <SafeAreaView style={styles.container}>
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(googlesheets_get_spreadsheetId_read());
+  }, []);
+  return <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.group} />
         <View style={styles.group}>
@@ -21,9 +20,8 @@ const WelcomeScreen = () => {
         </View>
         <Text style={styles.footer}>Made with ❤️ by Crowdbotics</Text>
       </ScrollView>
-    </SafeAreaView>
-  )
-}
+    </SafeAreaView>;
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -59,6 +57,5 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     marginBottom: 20
   }
-})
-
-export default WelcomeScreen
+});
+export default WelcomeScreen;
