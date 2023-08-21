@@ -6,12 +6,13 @@ import { View, Image, Text, ScrollView, SafeAreaView, StyleSheet } from "react-n
 
 const WelcomeScreen = () => {
   const dispatch = useDispatch();
-  const { entities } = useSelector(state => state.Googlesheets_response_get_getSheetData)
-
-  console.log("entities", entities[0]?.sheets[0]?.data)
+  const {
+    entities
+  } = useSelector(state => state.Googlesheets_response_get_getSheetData);
+  console.log("entities", entities[0]?.sheets[0]?.data);
   useEffect(() => {
     dispatch(googlesheets_get_spreadsheetId_read({
-      spreadsheetId: "1qCc9gWdw0TZ0Tn7B1z21R49ns5f6LuuV0DxF9IIIH58",
+      spreadsheetId: "spreadsheetId",
       includeGridData: true,
       ranges: "A1:A2"
     }));
