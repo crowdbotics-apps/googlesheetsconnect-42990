@@ -9,6 +9,8 @@ const googleSheets = axios.create({
   }
 })
 function googlesheets_get_spreadsheetId_read(payload) {
-  return googleSheets.get(`/${payload.spreadsheetId}`)
+  return googleSheets.get(`/${payload.spreadsheetId}`, {
+    params: { includeGridData: payload.includeGridData, ranges: payload.ranges }
+  })
 }
 export const apiService = { googlesheets_get_spreadsheetId_read }
